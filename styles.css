@@ -1,7 +1,7 @@
 :root {
-  --bg: #0f1226;
-  --card: #161a36;
-  --line: #2f3766;
+  --bg: #0c1024;
+  --card: #171c3d;
+  --line: #38407a;
   --text: #f8f8fe;
   --accent-1: #7f5bff;
   --accent-2: #ff5fa0;
@@ -16,27 +16,27 @@
 body {
   margin: 0;
   font-family: Inter, system-ui, sans-serif;
-  background: radial-gradient(circle at top right, #2b2e64 0%, var(--bg) 40%);
+  background: radial-gradient(circle at 95% 5%, #2e3271 0%, var(--bg) 42%);
   color: var(--text);
   min-height: 100vh;
 }
 
 .layout {
   display: grid;
-  grid-template-columns: 330px 1fr;
-  gap: 2rem;
+  grid-template-columns: 340px 1fr;
+  gap: 1.8rem;
   padding: 2rem;
 }
 
 .designer-panel {
-  background: color-mix(in hsl, var(--card) 88%, black);
+  background: color-mix(in srgb, var(--card) 92%, black);
   border: 1px solid var(--line);
   border-radius: 18px;
-  padding: 1.2rem;
-  box-shadow: 0 10px 30px #0000004a;
+  padding: 1.15rem;
+  box-shadow: 0 12px 30px #00000055;
   height: fit-content;
   position: sticky;
-  top: 1.4rem;
+  top: 1.25rem;
 }
 
 .designer-panel h1 {
@@ -45,45 +45,56 @@ body {
 }
 
 .designer-panel p {
-  opacity: 0.85;
-  margin-bottom: 1rem;
+  margin: 0.45rem 0 1rem;
+  opacity: 0.9;
 }
 
 .form-grid {
   display: grid;
-  gap: 0.85rem;
+  gap: 0.78rem;
 }
 
 label {
   display: grid;
-  gap: 0.35rem;
-  font-size: 0.86rem;
+  gap: 0.32rem;
+  font-size: 0.84rem;
   font-weight: 600;
 }
 
 input {
   border: 1px solid var(--line);
   border-radius: 10px;
-  padding: 0.55rem 0.7rem;
-  background: #0f1430;
+  padding: 0.54rem 0.7rem;
+  background: #0f1532;
   color: #fff;
+}
+
+input:focus {
+  outline: 2px solid color-mix(in srgb, var(--accent-4) 60%, white);
+  outline-offset: 1px;
 }
 
 .form-actions {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0.6rem;
-  margin-top: 0.2rem;
+  margin-top: 0.3rem;
 }
 
 button {
   border: none;
   border-radius: 11px;
-  padding: 0.65rem;
+  padding: 0.66rem;
   cursor: pointer;
   font-weight: 700;
-  color: white;
+  color: #fff;
   background: linear-gradient(120deg, var(--accent-1), var(--accent-2));
+  transition: transform 120ms ease, filter 120ms ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.08);
 }
 
 .preview-area {
@@ -100,7 +111,7 @@ button {
   overflow: hidden;
   border-radius: 18px;
   border: 12px solid transparent;
-  box-shadow: 0 25px 40px #00000061;
+  box-shadow: 0 25px 48px #00000066;
 }
 
 .certificate::before {
@@ -108,22 +119,24 @@ button {
   position: absolute;
   inset: 0;
   border: 12px solid transparent;
-  border-image: linear-gradient(130deg, var(--accent-1), var(--accent-2), var(--accent-3), var(--accent-4)) 1;
+  border-image: linear-gradient(135deg, var(--accent-1), var(--accent-2), var(--accent-3), var(--accent-4)) 1;
   pointer-events: none;
+}
+
+.certificate-glow {
+  position: absolute;
+  inset: 12px;
+  border-radius: 12px;
+  box-shadow: inset 0 0 0 2px color-mix(in srgb, var(--accent-1) 35%, #ffffff),
+    inset 0 0 0 8px #ffffff;
 }
 
 .pattern-overlay {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 0 0, #9d81ff33, transparent 45%),
-    radial-gradient(circle at 100% 100%, #ffb7dc5c, transparent 35%),
-    repeating-linear-gradient(
-      -45deg,
-      transparent,
-      transparent 15px,
-      #f6f2ff 15px,
-      #f6f2ff 30px
-    );
+  background: radial-gradient(circle at 0 0, #9d81ff38, transparent 45%),
+    radial-gradient(circle at 100% 100%, #ffb7dc4f, transparent 35%),
+    repeating-linear-gradient(-45deg, transparent, transparent 16px, #f7f3ff 16px, #f7f3ff 32px);
 }
 
 .cert-header,
@@ -138,18 +151,31 @@ button {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2.1rem 2.4rem 0.5rem;
+  padding: 2.1rem 2.4rem 0.45rem;
 }
 
 .logo-wrap {
   display: flex;
   align-items: center;
-  gap: 0.9rem;
+  gap: 0.85rem;
 }
 
-.logo {
-  width: 70px;
-  height: 70px;
+.logo-shell {
+  width: 74px;
+  height: 74px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: linear-gradient(160deg, #ffffff, #efe8ff);
+  box-shadow: 0 8px 15px #6f54a438;
+}
+
+.logo,
+#custom-logo {
+  width: 66px;
+  height: 66px;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 .org-name {
@@ -174,7 +200,7 @@ button {
   letter-spacing: 0.3em;
   text-transform: uppercase;
   color: #786f9a;
-  margin: 0.8rem 0;
+  margin: 0.6rem 0;
   font-size: 0.78rem;
 }
 
@@ -194,13 +220,13 @@ h2 {
   font-family: "Great Vibes", cursive;
   font-size: clamp(2rem, 4.5vw, 3.4rem);
   margin: 0.3rem 0 0.7rem;
-  color: #8928cd;
+  color: color-mix(in srgb, var(--accent-1) 65%, #6f17a1);
 }
 
 .description {
-  max-width: 85%;
+  max-width: 84%;
   margin: 0 auto;
-  line-height: 1.65;
+  line-height: 1.62;
   color: #4a4463;
 }
 
@@ -219,7 +245,7 @@ h2 {
   align-items: center;
   gap: 1rem;
   padding: 0 2.5rem;
-  margin-top: 0.8rem;
+  margin-top: 0.6rem;
 }
 
 .meta-block {
@@ -233,12 +259,12 @@ h2 {
 }
 
 .meta-block p:last-child {
-  margin-top: 0.2rem;
+  margin: 0.2rem 0 0;
   font-weight: 600;
 }
 
 .seal {
-  width: 115px;
+  width: 118px;
   aspect-ratio: 1;
   border-radius: 50%;
   background: conic-gradient(from 20deg, var(--accent-1), var(--accent-2), var(--accent-3), var(--accent-4), var(--accent-1));
@@ -246,7 +272,8 @@ h2 {
   place-items: center;
   color: #fff;
   text-align: center;
-  box-shadow: 0 8px 18px #4826a24d;
+  box-shadow: 0 10px 20px #4826a252;
+  border: 3px solid #fff;
 }
 
 .seal span {
@@ -259,7 +286,7 @@ h2 {
 }
 
 .signatures {
-  margin: 0.8rem 2.7rem;
+  margin: 0.7rem 2.7rem;
   display: flex;
   justify-content: space-between;
 }
@@ -269,6 +296,32 @@ h2 {
   font-size: 2rem;
   margin: 0;
   color: #31295d;
+}
+
+@media print {
+  body {
+    background: #fff;
+  }
+
+  .layout {
+    display: block;
+    padding: 0;
+  }
+
+  .designer-panel {
+    display: none;
+  }
+
+  .preview-area {
+    display: block;
+  }
+
+  .certificate {
+    width: 100%;
+    border-radius: 0;
+    box-shadow: none;
+    break-inside: avoid;
+  }
 }
 
 @media (max-width: 1040px) {

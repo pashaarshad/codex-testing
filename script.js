@@ -7,6 +7,7 @@ const fields = {
   id: document.getElementById("id"),
   organizer: document.getElementById("organizer"),
   venue: document.getElementById("venue"),
+  logoUrl: document.getElementById("logo-url"),
 };
 
 const outputs = {
@@ -20,14 +21,17 @@ const outputs = {
   venue: document.getElementById("cert-venue"),
 };
 
+const defaultLogo = document.getElementById("default-logo");
+const customLogo = document.getElementById("custom-logo");
+const root = document.documentElement;
+
 const themes = [
   ["#7f5bff", "#ff5fa0", "#ffc940", "#00d2ff"],
   ["#0047ff", "#00b6ff", "#4fffb0", "#ffe066"],
   ["#6a11cb", "#d4145a", "#ff8f00", "#2ec4b6"],
   ["#ff006e", "#fb5607", "#ffbe0b", "#3a86ff"],
+  ["#3a0ca3", "#f72585", "#4cc9f0", "#ffd166"],
 ];
-
-const root = document.documentElement;
 
 function formatDate(inputDate) {
   if (!inputDate) return "17 Sep 2026";
@@ -40,6 +44,27 @@ function formatDate(inputDate) {
   });
 }
 
+function updateLogo(url) {
+  if (!url) {
+    customLogo.hidden = true;
+    defaultLogo.hidden = false;
+    customLogo.removeAttribute("src");
+    return;
+  }
+
+  customLogo.src = url;
+}
+
+customLogo.addEventListener("load", () => {
+  customLogo.hidden = false;
+  defaultLogo.hidden = true;
+});
+
+customLogo.addEventListener("error", () => {
+  customLogo.hidden = true;
+  defaultLogo.hidden = false;
+});
+
 function syncCertificate() {
   outputs.recipient.textContent = fields.recipient.value || "Recipient Name";
   outputs.event.textContent = fields.event.value || "Event Name";
@@ -50,6 +75,7 @@ function syncCertificate() {
   outputs.id.textContent = fields.id.value || "EMS-0000";
   outputs.organizer.textContent = fields.organizer.value || "Organization Name";
   outputs.venue.textContent = fields.venue.value || "Venue";
+  updateLogo(fields.logoUrl.value.trim());
 }
 
 Object.values(fields).forEach((input) => {
