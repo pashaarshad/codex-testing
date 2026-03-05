@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Management Certificate Studio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@400;500;600;700&family=Great+Vibes&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="layout">
+      <section class="designer-panel">
+        <h1>Certificate Designer</h1>
+        <p>
+          Design a realistic, colorful certificate for your event and instantly preview it.
+        </p>
+
+        <form id="certificate-form" class="form-grid">
+          <label>Recipient Name <input id="recipient" value="Aarav Mehta" /></label>
+          <label>Event Name <input id="event" value="National Event Management Summit 2026" /></label>
+          <label>Certificate Title <input id="title" value="Certificate of Excellence" /></label>
+          <label>Achievement <input id="achievement" value="Outstanding Coordination and Operational Leadership" /></label>
+          <label>Organizer <input id="organizer" value="Global Event Management Council" /></label>
+          <label>Venue <input id="venue" value="Grand Convention Arena, Bengaluru" /></label>
+          <label>Date <input id="date" type="date" /></label>
+          <label>Certificate ID <input id="id" value="EMS-2026-0917" /></label>
+          <label>Logo URL (optional) <input id="logo-url" placeholder="https://.../logo.png" /></label>
+
+          <div class="form-actions">
+            <button type="button" id="randomize">Random Theme</button>
+            <button type="button" id="print">Print / Save PDF</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="preview-area">
+        <article class="certificate" id="certificate">
+          <div class="certificate-glow" aria-hidden="true"></div>
+          <div class="pattern-overlay" aria-hidden="true"></div>
+
+          <header class="cert-header">
+            <div class="logo-wrap">
+              <div class="logo-shell">
+                <img id="custom-logo" alt="Organization logo" hidden />
+                <svg id="default-logo" viewBox="0 0 120 120" class="logo" aria-hidden="true">
+                  <defs>
+                    <linearGradient id="logoGrad" x1="0%" x2="100%" y1="0%" y2="100%">
+                      <stop offset="0%" stop-color="#ffcf4a" />
+                      <stop offset="100%" stop-color="#ff5fa0" />
+                    </linearGradient>
+                  </defs>
+                  <circle cx="60" cy="60" r="52" fill="url(#logoGrad)" />
+                  <path d="M24 66 44 47l17 15 31-31" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
+                  <text x="50%" y="93" text-anchor="middle" fill="#fff" font-size="14" font-family="Inter">EMS</text>
+                </svg>
+              </div>
+              <div>
+                <p class="org-name" id="org-name">Global Event Management Council</p>
+                <p class="org-tag">Excellence • Innovation • Leadership</p>
+              </div>
+            </div>
+            <span class="serial">ID: <strong id="cert-id">EMS-2026-0917</strong></span>
+          </header>
+
+          <div class="cert-body">
+            <p class="label">Proudly Presents</p>
+            <h2 id="cert-title">Certificate of Excellence</h2>
+            <p class="to-text">This certificate is awarded to</p>
+            <p class="recipient" id="cert-recipient">Aarav Mehta</p>
+            <p class="description">
+              for exceptional contribution in
+              <strong id="cert-event">National Event Management Summit 2026</strong>
+              by demonstrating
+              <span id="cert-achievement">Outstanding Coordination and Operational Leadership</span>.
+            </p>
+          </div>
+
+          <footer class="cert-footer">
+            <div class="meta-block">
+              <p class="meta-label">Date</p>
+              <p id="cert-date">17 Sep 2026</p>
+            </div>
+            <div class="seal" aria-hidden="true">
+              <span>Verified</span>
+              <strong>Official Seal</strong>
+            </div>
+            <div class="meta-block">
+              <p class="meta-label">Venue</p>
+              <p id="cert-venue">Grand Convention Arena, Bengaluru</p>
+            </div>
+          </footer>
+
+          <div class="signatures">
+            <div>
+              <p class="sign">Elena Park</p>
+              <p class="meta-label">Program Director</p>
+            </div>
+            <div>
+              <p class="sign">Ravi Narayanan</p>
+              <p class="meta-label">Chief Organizer</p>
+            </div>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

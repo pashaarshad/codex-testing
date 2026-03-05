@@ -1,0 +1,335 @@
+:root {
+  --bg: #0c1024;
+  --card: #171c3d;
+  --line: #38407a;
+  --text: #f8f8fe;
+  --accent-1: #7f5bff;
+  --accent-2: #ff5fa0;
+  --accent-3: #ffc940;
+  --accent-4: #00d2ff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, system-ui, sans-serif;
+  background: radial-gradient(circle at 95% 5%, #2e3271 0%, var(--bg) 42%);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 1.8rem;
+  padding: 2rem;
+}
+
+.designer-panel {
+  background: color-mix(in srgb, var(--card) 92%, black);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 1.15rem;
+  box-shadow: 0 12px 30px #00000055;
+  height: fit-content;
+  position: sticky;
+  top: 1.25rem;
+}
+
+.designer-panel h1 {
+  margin: 0;
+  font-size: 1.35rem;
+}
+
+.designer-panel p {
+  margin: 0.45rem 0 1rem;
+  opacity: 0.9;
+}
+
+.form-grid {
+  display: grid;
+  gap: 0.78rem;
+}
+
+label {
+  display: grid;
+  gap: 0.32rem;
+  font-size: 0.84rem;
+  font-weight: 600;
+}
+
+input {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 0.54rem 0.7rem;
+  background: #0f1532;
+  color: #fff;
+}
+
+input:focus {
+  outline: 2px solid color-mix(in srgb, var(--accent-4) 60%, white);
+  outline-offset: 1px;
+}
+
+.form-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem;
+  margin-top: 0.3rem;
+}
+
+button {
+  border: none;
+  border-radius: 11px;
+  padding: 0.66rem;
+  cursor: pointer;
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(120deg, var(--accent-1), var(--accent-2));
+  transition: transform 120ms ease, filter 120ms ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.08);
+}
+
+.preview-area {
+  display: grid;
+  place-items: center;
+}
+
+.certificate {
+  width: min(980px, 100%);
+  aspect-ratio: 1.42;
+  background: #fff;
+  color: #2a2346;
+  position: relative;
+  overflow: hidden;
+  border-radius: 18px;
+  border: 12px solid transparent;
+  box-shadow: 0 25px 48px #00000066;
+}
+
+.certificate::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 12px solid transparent;
+  border-image: linear-gradient(135deg, var(--accent-1), var(--accent-2), var(--accent-3), var(--accent-4)) 1;
+  pointer-events: none;
+}
+
+.certificate-glow {
+  position: absolute;
+  inset: 12px;
+  border-radius: 12px;
+  box-shadow: inset 0 0 0 2px color-mix(in srgb, var(--accent-1) 35%, #ffffff),
+    inset 0 0 0 8px #ffffff;
+}
+
+.pattern-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 0 0, #9d81ff38, transparent 45%),
+    radial-gradient(circle at 100% 100%, #ffb7dc4f, transparent 35%),
+    repeating-linear-gradient(-45deg, transparent, transparent 16px, #f7f3ff 16px, #f7f3ff 32px);
+}
+
+.cert-header,
+.cert-body,
+.cert-footer,
+.signatures {
+  position: relative;
+  z-index: 2;
+}
+
+.cert-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2.1rem 2.4rem 0.45rem;
+}
+
+.logo-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.logo-shell {
+  width: 74px;
+  height: 74px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: linear-gradient(160deg, #ffffff, #efe8ff);
+  box-shadow: 0 8px 15px #6f54a438;
+}
+
+.logo,
+#custom-logo {
+  width: 66px;
+  height: 66px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.org-name {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.org-tag,
+.serial {
+  margin: 0;
+  color: #645e80;
+  font-size: 0.82rem;
+}
+
+.cert-body {
+  text-align: center;
+  padding: 1rem 2.8rem;
+}
+
+.label {
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #786f9a;
+  margin: 0.6rem 0;
+  font-size: 0.78rem;
+}
+
+h2 {
+  margin: 0;
+  font-family: Cinzel, serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: #241c4c;
+}
+
+.to-text {
+  margin: 0.8rem 0 0;
+  color: #6b628a;
+}
+
+.recipient {
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(2rem, 4.5vw, 3.4rem);
+  margin: 0.3rem 0 0.7rem;
+  color: color-mix(in srgb, var(--accent-1) 65%, #6f17a1);
+}
+
+.description {
+  max-width: 84%;
+  margin: 0 auto;
+  line-height: 1.62;
+  color: #4a4463;
+}
+
+.description strong {
+  color: #251f52;
+}
+
+.description span {
+  color: #9b2465;
+  font-weight: 700;
+}
+
+.cert-footer {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 1rem;
+  padding: 0 2.5rem;
+  margin-top: 0.6rem;
+}
+
+.meta-block {
+  text-align: center;
+}
+
+.meta-label {
+  margin: 0;
+  color: #706989;
+  font-size: 0.82rem;
+}
+
+.meta-block p:last-child {
+  margin: 0.2rem 0 0;
+  font-weight: 600;
+}
+
+.seal {
+  width: 118px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: conic-gradient(from 20deg, var(--accent-1), var(--accent-2), var(--accent-3), var(--accent-4), var(--accent-1));
+  display: grid;
+  place-items: center;
+  color: #fff;
+  text-align: center;
+  box-shadow: 0 10px 20px #4826a252;
+  border: 3px solid #fff;
+}
+
+.seal span {
+  font-size: 0.7rem;
+  line-height: 1;
+}
+
+.seal strong {
+  font-size: 0.75rem;
+}
+
+.signatures {
+  margin: 0.7rem 2.7rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.sign {
+  font-family: "Great Vibes", cursive;
+  font-size: 2rem;
+  margin: 0;
+  color: #31295d;
+}
+
+@media print {
+  body {
+    background: #fff;
+  }
+
+  .layout {
+    display: block;
+    padding: 0;
+  }
+
+  .designer-panel {
+    display: none;
+  }
+
+  .preview-area {
+    display: block;
+  }
+
+  .certificate {
+    width: 100%;
+    border-radius: 0;
+    box-shadow: none;
+    break-inside: avoid;
+  }
+}
+
+@media (max-width: 1040px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .designer-panel {
+    position: static;
+  }
+}
